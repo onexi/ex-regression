@@ -67,7 +67,7 @@ exercise.run =  function (){
 
     // get linear regression equation
     lr = exercise.linearRegression(x, y);
-    console.log("lr: "+lr);
+    //console.log("lr: "+lr);
     graph(x,y,lr);
 };
 
