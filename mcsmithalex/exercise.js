@@ -16,8 +16,14 @@ exercise.linearRegression = function (x,y){
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
-
-
+    var n = x.length
+    for (var i=0; i<x; i++)
+    {
+        sumX += x[i];
+        sumy += y[i];
+        sumXY += x[i]*y[i];
+        sumXX += x[i]*x[i];
+    };
 
     /*
      * Calculate a and b for the formular:
@@ -27,15 +33,19 @@ exercise.linearRegression = function (x,y){
 
     // var b =
     exercise.linearRegression.b = function(){
+        b = (sumXY - (sumX*sumY) / n) / (sumXX - (sumXX/n));
         return b;
     };
 
     // var a =
     exercise.linearRegression.a = function(){
+        a = (sumY - (b*sumX)) / n
         return a;
     };
 
-    return;
+    return function(x){
+        return x * b + a;
+    };
 };
 
 
@@ -51,6 +61,8 @@ exercise.run =  function (){
     for (var i=0; i<length; i++){
         x[i] = getRandomNumber();
         y[i] = getRandomNumber();
+        //x[i] = i;
+        //y[i] = i + 1;
     }
 
     // get linear regression equation
