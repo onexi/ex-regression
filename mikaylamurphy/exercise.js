@@ -16,7 +16,14 @@ exercise.linearRegression = function (x,y){
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
-
+    for (i = 0; i < x.length; i++){
+        x_val = x[i];
+        y_val = y[i];
+        sumX += x_val;
+        sumXX += x_val * x_val;
+        sumY += y_val;
+        sumXY += x_val * y_val;
+    }
 
 
     /*
@@ -26,16 +33,19 @@ exercise.linearRegression = function (x,y){
 
 
     // var b =
-    exercise.linearRegression.b = function(){
+    b = (sumXY - ((sumX * sumY) / x.length)) / (sumXX - ((sumX * sumX)/x.length))
+    /* exercise.linearRegression.b = function(){
         return b;
-    };
+    }; */
 
+    a = (sumY - (b * sumX)) / x.length
     // var a =
-    exercise.linearRegression.a = function(){
+   /* exercise.linearRegression.a = function(){
         return a;
-    };
+    }; */
 
-    return;
+    return function(x){
+        return x * b + a};
 };
 
 
