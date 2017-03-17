@@ -47,6 +47,10 @@ exercise.linearRegression = function (x,y){
     
         var a = (sumY - b*sumX)/x.length;
 
+
+        exercise.linearRegression.b = function(){return b;};
+        exercise.linearRegression.a = function(){return a;};
+
     return function(x){ return x*b + a; };
 };
 
