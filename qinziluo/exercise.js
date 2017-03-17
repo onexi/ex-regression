@@ -47,14 +47,14 @@ exercise.linearRegression = function (x, y) {
 
 
     var b = (sumXY - sumX * sumY / n) / (sumXX - sumX * sumX / n);
-    console.log(b);
+    //console.log(b);
     exercise.linearRegression.b = function () {
        
         return b;
     };
 
     var a =  (sumY - (b * sumX)) / n;
-    console.log(a);
+    //console.log(a);
     exercise.linearRegression.a = function () {
        
         return a;
