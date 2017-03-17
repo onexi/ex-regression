@@ -67,7 +67,7 @@ exercise.linearRegression = function (x,y){
 
     return function(x){
         // console.log(b);
-        console.log(a);
+        // console.log(a);
         return b*x +a;
         
     };
