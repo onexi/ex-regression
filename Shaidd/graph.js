@@ -34,8 +34,8 @@ function graph(x,y,lr){
     }
 
     // scale matrix "a"
-    var k = Math.floor((height)/(2*span));
-    //var k = 100;
+    //var k = Math.floor((height)/(2*span));
+    var k = 100;
     var a = [[k, 0],
     		 [0, k]];
 
