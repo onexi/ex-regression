@@ -16,26 +16,37 @@ exercise.linearRegression = function (x,y){
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
+    var n = x.length; 
 
+    for (var i=0; i<x.length; i++) {
+    
+        sumX += x[i];
+        sumY += y[i];
+        sumXY += x[i]*y[i];
+        sumXX += x[i]*x[i];
+    }
 
 
     /*
      * Calculate a and b for the formular:
-     * y = x * b + a
+     * y = x * b + a //this is the equation of the best fit line (solve for b and a)
      */
 
 
-    // var b =
+    var b = (sumXY - (sumX * sumY) /n) / (sumXX - sumX*sumX / n);
+    console.log('b is ' + b);
     exercise.linearRegression.b = function(){
         return b;
     };
 
-    // var a =
+    var a = (sumY - sumX*b)/n
     exercise.linearRegression.a = function(){
         return a;
     };
 
-    return;
+    return function(x){
+        return x * b + a;
+    };
 };
 
 
@@ -51,6 +62,8 @@ exercise.run =  function (){
     for (var i=0; i<length; i++){
         x[i] = getRandomNumber();
         y[i] = getRandomNumber();
+        x[i] = i;
+        y[i] = i+1;
     }
 
     // get linear regression equation
