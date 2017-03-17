@@ -16,26 +16,41 @@ exercise.linearRegression = function (x,y){
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
+    var n = x.length;
 
+    for (var i = 0; i<x.length; i++){
+        sumX += x[i];
+        sumY += y[i];
+        sumXY += x[i] * y[i];
+        sumXX += x[i] * x[i];
+    }
 
 
     /*
      * Calculate a and b for the formular:
      * y = x * b + a
      */
+     var b = (sumXY - ( sumX * sumY/n ) )  / (sumXX - sumX*sumX/n);
+     var a = (sumY - sumX*b) / n;
+
+     console.log("sadafaf");
+
 
 
     // var b =
-    exercise.linearRegression.b = function(){
-        return b;
-    };
+    // exercise.linearRegression.b = function(){
+        
+    //     return b;
+    // };
 
     // var a =
-    exercise.linearRegression.a = function(){
-        return a;
+    // exercise.linearRegression.a = function(){
+    //     return a;
+    // };
+    
+    return function(x){
+        return a + b * x;
     };
-
-    return;
 };
 
 
@@ -49,8 +64,10 @@ exercise.run =  function (){
 
     // get random points
     for (var i=0; i<length; i++){
-        x[i] = getRandomNumber();
-        y[i] = getRandomNumber();
+        // x[i] = getRandomNumber();
+        // y[i] = getRandomNumber();
+        x[i] = (i);
+        y[i] =(i+1);
     }
 
     // get linear regression equation
