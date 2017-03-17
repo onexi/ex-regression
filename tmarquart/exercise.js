@@ -16,28 +16,55 @@ exercise.linearRegression = function (x,y){
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
+    var n=x.length;
 
-    
+    function sumProduct(array1, array2) {
+        var sum = 0;
+        for (var i = 0; i < array1.length; i++) {
+            sum += array1[i] * array2[i];
+        }
+        return sum;
+    }
+
+    function sum(array){
+        return array.reduce(function(total,item){
+            return total+item;
+        },0);
+    }
+
+    sumXY=sumProduct(x,y);
+    sumXX=sumProduct(x,x);
+    sumX=sum(x);
+    sumY=sum(y);
 
     /*
      * Calculate a and b for the formular:
      * y = x * b + a
      */
-
+    var m=(sumXY-sumX*sumY/n)/(sumXX-sumX*sumX/n);
+    var b=(sumY-m*sumX)/n;
+    //console.log(m);
+    //console.log(b);
 
     // var b =
-    exercise.linearRegression.b = function(){
-        var b=5;
-        return b;
-    };
+    // exercise.linearRegression.b = function(){
+    //     var b=5;
+    //     return b;
+    // };
 
-    // var a =
-    exercise.linearRegression.a = function(){
-        var a=2;
-        return a;
-    };
+    // // var a =
+    // exercise.linearRegression.a = function(){
+    //     var a=2;
+    //     return a;
+    // };
 
-    return;
+    exercise.linearRegression.b=m;
+    exercise.linearRegression.a=b;
+    
+    return function(x){
+        return y=m*x+b;
+    }
+    //return;
 };
 
 
