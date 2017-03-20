@@ -1,4 +1,5 @@
 var exercise = {};
+//var graph = require("./graph.js");
 
 exercise.linearRegression = function (x,y){
     /*
@@ -12,11 +13,19 @@ exercise.linearRegression = function (x,y){
 
     */
 
+    var n = x.length;
+
     var sumX = 0;
     var sumY = 0;
     var sumXY  = 0;
     var sumXX = 0;
 
+    for (var i=0; i<n; i++){
+        sumX += x[i];
+        sumY += y[i];
+        sumXY += x[i]*y[i];
+        sumXX += x[i]*x[i];
+    };
 
 
     /*
@@ -25,17 +34,19 @@ exercise.linearRegression = function (x,y){
      */
 
 
-    // var b =
+    var b = (sumXY - sumX*sumY/n)/(sumXX - (sumX*sumX/n));
     exercise.linearRegression.b = function(){
         return b;
     };
 
-    // var a =
+    var a = (sumY - sumX*b)/n;
     exercise.linearRegression.a = function(){
         return a;
     };
 
-    return;
+    return function(x){
+        return b*x + a;
+    };
 };
 
 
